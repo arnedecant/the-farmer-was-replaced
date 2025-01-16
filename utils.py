@@ -67,7 +67,7 @@ def manage_water (entity = Entities.Grass, threshold = water_threshold):
 	if (entity in entities_water_allowed and get_water() <= threshold):
 		use_item(Items.Water)
 	force_fertilizer = num_items(Items.Weird_Substance) < num_weird_sub_threshold
-	force_fertilizer = force_fertilizer and num_items(Items.Fertilizer) > 1000
+	force_fertilizer = force_fertilizer and num_items(Items.Fertilizer)
 	if (get_entity_type() in entities_fertilizer_allowed or force_fertilizer):
 		use_item(Items.Fertilizer)
 		
@@ -79,12 +79,13 @@ def manage_soil (entity = Entities.Grass):
 	if (should_till_soil or should_till_grass):
 		till()
 
-def find_entity ():
+def find_entity (use_random = False):
+	has_enough_weird_sub = num_items(Items.Weird_Substance) > get_world_size() * num_unlocked(Unlocks.Mazes)
 	if (num_items(Items.Power) < num_item_threshold / 20):
 		return Entities.Sunflower
 	elif (num_items(Items.Hay) < num_item_threshold):
 		return Entities.Grass
-	elif (num_items(Items.Wood) < num_item_threshold * 25):
+	elif (num_items(Items.Wood) < num_item_threshold):
 		return Entities.Tree
 	elif (num_items(Items.Carrot) < num_item_threshold):
 		return Entities.Carrot
@@ -94,10 +95,12 @@ def find_entity ():
 		return Entities.Cactus
 	elif (num_items(Items.Bone) < num_item_threshold * 10):
 		return Entities.Dinosaur
-	elif (num_items(Items.Gold) < num_item_threshold * 10 and num_items(Items.Weird_Substance) > 10000):
+	elif (num_items(Items.Gold) < num_item_threshold * 10 and has_enough_weird_sub):
 		return Entities.Treasure
+	# elif (use_random):
+	# 	return get_random_entity()
 	else:
-		return Entities.Tree
+		return Entities.Tree 
 		
 def check_unlocks ():
 	for i in range(len(unlocks_auto_unlock)):
