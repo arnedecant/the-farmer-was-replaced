@@ -1,3 +1,5 @@
+# possible next tactic could be wall hugging
+
 def move_to_safe (target_x, target_y):
     curr_x, curr_y = get_pos()
     while curr_x != target_x:
