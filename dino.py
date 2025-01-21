@@ -1,5 +1,5 @@
+from globals import WORLD_SIZE
 from utils import get_pos
-
 
 # possible next tactic could be wall hugging
 
@@ -24,7 +24,7 @@ def move_to_safe (target_x, target_y):
     return True
 
 def dino_s_pattern (row=0, current_x=0):
-    world_size = get_world_size()
+    world_size = WORLD_SIZE
     current_y = get_pos_y()
     if row == world_size:
         move_to_safe(0, 0)

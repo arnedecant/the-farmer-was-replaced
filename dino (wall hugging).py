@@ -1,3 +1,5 @@
+from globals import WORLD_SIZE
+
 # Tried asking ChatGPT... But this thing doesn't work.
 
 next_x = None
@@ -21,10 +23,10 @@ while True:
     curr_x, curr_y = get_pos()
 
     # Determine the hugging direction (we assume the dino hugs the right wall)
-    if curr_x == 0 or curr_x == get_world_size() - 1:  # If on left or right wall
+    if curr_x == 0 or curr_x == WORLD_SIZE - 1:  # If on left or right wall
         # Move vertically (North/South) along the wall until y aligns with the apple
         if curr_y < next_y:
-            has_moved = move_dino_to(curr_x, get_world_size() - 1)  # Move South along the right wall
+            has_moved = move_dino_to(curr_x, WORLD_SIZE - 1)  # Move South along the right wall
         else:
             has_moved = move_dino_to(curr_x, 0)  # Move North along the left wall
     else:

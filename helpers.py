@@ -49,7 +49,7 @@ def manage_soil (entity = Entities.Grass):
 		till()
 
 def find_entity (use_random = False):
-	has_enough_weird_sub = num_items(Items.Weird_Substance) > get_world_size() * num_unlocked(Unlocks.Mazes)
+	has_enough_weird_sub = num_items(Items.Weird_Substance) > WORLD_SIZE * num_unlocked(Unlocks.Mazes)
 	if (num_items(Items.Power) < NUM_ITEM_THRESHOLD / 100):
 		return Entities.Sunflower
 	elif (num_items(Items.Hay) < NUM_ITEM_THRESHOLD):
