@@ -18,6 +18,35 @@ def move_to (x, y):
             if (not has_moved):
                 return False
 	return True
+
+def move_to_smart (x, y):
+    x_dir = determine_x_dir(get_pos_x(), x)
+    y_dir = determine_y_dir(get_pos_y(), y)
+    while get_pos_x() != x:
+        has_moved = move(x_dir)
+        if (not has_moved):
+            return False
+    while get_pos_y() != y:
+        has_moved = move(y_dir)
+        if (not has_moved):
+            return False
+	return True
+
+def determine_x_dir (x_from, x_to):
+  right_moves = (x_to - x_from) % grid_size
+  left_moves = (x_from - x_to) % grid_size
+  if (right_moves < left_moves):
+    return East
+  else:
+    return West
+
+def determine_y_dir (y_from, y_to):
+  up_moves = (y_to - y_from) % grid_size
+  down_moves = (y_from - y_to) % grid_size
+  if (up_moves < down_moves):
+    return North
+  else:
+    return South
 	
 def try_dirs ():
 	dirs = [North, West, East, South]
@@ -68,6 +97,7 @@ def manage_water (entity = Entities.Grass, threshold = water_threshold):
 		use_item(Items.Water)
 	force_fertilizer = num_items(Items.Weird_Substance) < num_weird_sub_threshold
 	force_fertilizer = force_fertilizer and num_items(Items.Fertilizer)
+	force_fertilizer = force_fertilizer and global_force_fertilizer
 	if (get_entity_type() in entities_fertilizer_allowed or force_fertilizer):
 		use_item(Items.Fertilizer)
 		
@@ -81,7 +111,7 @@ def manage_soil (entity = Entities.Grass):
 
 def find_entity (use_random = False):
 	has_enough_weird_sub = num_items(Items.Weird_Substance) > get_world_size() * num_unlocked(Unlocks.Mazes)
-	if (num_items(Items.Power) < num_item_threshold / 20):
+	if (num_items(Items.Power) < num_item_threshold / 100):
 		return Entities.Sunflower
 	elif (num_items(Items.Hay) < num_item_threshold):
 		return Entities.Grass
@@ -91,11 +121,11 @@ def find_entity (use_random = False):
 		return Entities.Carrot
 	elif (num_items(Items.Pumpkin) < num_item_threshold):
 		return Entities.Pumpkin
-	elif (num_items(Items.Cactus) < num_item_threshold * 10):
+	elif (num_items(Items.Cactus) < num_item_threshold):
 		return Entities.Cactus
-	elif (num_items(Items.Bone) < num_item_threshold * 10):
+	elif (num_items(Items.Bone) < num_item_threshold):
 		return Entities.Dinosaur
-	elif (num_items(Items.Gold) < num_item_threshold * 10 and has_enough_weird_sub):
+	elif (num_items(Items.Gold) < num_item_threshold and has_enough_weird_sub):
 		return Entities.Treasure
 	# elif (use_random):
 	# 	return get_random_entity()

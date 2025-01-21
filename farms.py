@@ -1,3 +1,30 @@
+grid_size = get_world_size()
+
+def default_game_loop (requested_entity = None):
+	clear()
+	while True:
+		change_hat(Hats.Straw_Hat)
+		move_to(0, 0)
+		check_unlocks()
+		if (requested_entity == None):
+			requested_entity = find_entity()
+		current_entity = get_entity_type()
+		if (requested_entity == Entities.Treasure):
+			clear()
+			maze_loop()
+		elif (requested_entity == Entities.Dinosaur):
+			clear_grid_for_dino()
+			change_hat(Hats.Dinosaur_Hat)
+			dino_loop()
+		elif (requested_entity == Entities.Pumpkin):
+			pumpkin_loop()
+		elif (requested_entity == Entities.Sunflower):
+			sunflower_loop()
+		elif (current_entity == Entities.Cactus):
+			cacti_loop()
+		else:
+			farm_loop(requested_entity)
+
 def farm_loop (entity):
 	for x in range(grid_size):
 		for y in range(grid_size):
@@ -66,6 +93,7 @@ def pumpkin_loop ():
 		while not can_harvest():
 			if (get_entity_type() != Entities.Pumpkin):
 				plant(Entities.Pumpkin)
+	harvest()
 	
 def cacti_loop ():
 	col_done = []
