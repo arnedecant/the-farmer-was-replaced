@@ -58,13 +58,3 @@ def dino_loop_simple (next_x = None, next_y = None, num_retries = 0):
 		while possible_dir != None and num_retries < 4:
 			num_retries = num_retries + 1
 			dino_loop_simple(next_x, next_y)
-    
-def clear_grid_for_dino ():
-	if (get_entity_type() == None):
-		return None
-	for x in range(grid_size):
-		for y in range(grid_size):
-			move_to(x, y)
-			harvest()
-			if (get_ground_type() == Grounds.Grassland):
-				till()

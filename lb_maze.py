@@ -1,3 +1,5 @@
+from farms import maze_loop
+
 clear()
 while True:
   maze_loop()

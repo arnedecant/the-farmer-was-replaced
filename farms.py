@@ -1,3 +1,6 @@
+from utils import move_to
+from helpers import check_unlocks, manage_single_plot, find_entity
+
 grid_size = get_world_size()
 
 def default_game_loop (requested_entity = None):
@@ -131,4 +134,5 @@ def cacti_loop ():
 def dino_loop ():
 	dino_s_pattern()
 	
-			
+def leaderboard_loop (lb = Leaderboards.Sunflowers):
+	print('run_leaderboard')
