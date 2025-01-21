@@ -1,14 +1,17 @@
-entities_water_allowed = [Entities.Carrot, Entities.Tree, Entities.Pumpkin, Entities.Sunflower]
-entities_fertilizer_allowed = [Entities.Sunflower]
-entities_soil = [Entities.Carrot, Entities.Pumpkin, Entities.Sunflower, Entities.Cactus]
-num_item_threshold = 1000000
-num_weird_sub_threshold = 25000
-water_threshold = 0.25
-global_force_fertilizer = False
-grid_size = get_world_size()
-unlocks_auto_unlock = [Unlocks.Cactus, Unlocks.Dinosaurs, Unlocks.Mazes, Unlocks.Polyculture, Unlocks.Fertilizer]
-leaderboard_speedup = 10000
-leaderboards = {
+ENTITIES_WATER_ALLOWED = [Entities.Carrot, Entities.Tree, Entities.Pumpkin, Entities.Sunflower]
+ENTITIES_FERTILIZER_ALLOWED = [Entities.Sunflower]
+ENTITIES_SOIL = [Entities.Carrot, Entities.Pumpkin, Entities.Sunflower, Entities.Cactus]
+NUM_ITEM_THRESHOLD = 1000000
+NUM_WEIRD_SUB_THRESHOLD = 25000
+WATER_THRESHOLD = 0.25
+FORCE_FERTILIZER = False
+
+WORLD_SIZE = get_world_size()
+
+UNLOCKS = [Unlocks.Cactus, Unlocks.Dinosaurs, Unlocks.Mazes, Unlocks.Polyculture, Unlocks.Fertilizer]
+
+LEADERBOARD_SPEEDUP = 10000
+LEADERBOARDS = {
 	Leaderboards.Maze: 'lb_maze',
 	Leaderboards.Dinosaur: 'lb_dino',
 	Leaderboards.Pumpkins: 'lb_pumpkin',

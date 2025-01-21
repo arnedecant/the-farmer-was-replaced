@@ -1,3 +1,5 @@
+from globals import WORLD_SIZE
+
 def clamp (val, min, max):
 	return max(min, min(val, max))
 
@@ -36,16 +38,16 @@ def move_to_smart (x, y):
 	return True
 
 def determine_x_dir (x_from, x_to):
-  right_moves = (x_to - x_from) % grid_size
-  left_moves = (x_from - x_to) % grid_size
+  right_moves = (x_to - x_from) % WORLD_SIZE
+  left_moves = (x_from - x_to) % WORLD_SIZE
   if (right_moves < left_moves):
     return East
   else:
     return West
 
 def determine_y_dir (y_from, y_to):
-  up_moves = (y_to - y_from) % grid_size
-  down_moves = (y_from - y_to) % grid_size
+  up_moves = (y_to - y_from) % WORLD_SIZE
+  down_moves = (y_from - y_to) % WORLD_SIZE
   if (up_moves < down_moves):
     return North
   else:

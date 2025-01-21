@@ -1,5 +1,6 @@
 from utils import move_to
-from helpers import check_unlocks, manage_single_plot, find_entity
+from helpers import check_unlocks, manage_single_plot, find_entity, clear_grid_for_dino
+from dino import dino_s_pattern
 
 grid_size = get_world_size()
 

@@ -1,3 +1,6 @@
+from utils import get_pos
+
+
 # possible next tactic could be wall hugging
 
 def move_to_safe (target_x, target_y):
